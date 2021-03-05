@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/ui/accueil.dart';
 import 'package:flutter_project/ui/carte.dart';
+import 'package:flutter_project/ui/past_launches.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,10 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static List<Widget> _widgetOptions = <Widget>[
     Accueil(key: UniqueKey()),
     Carte(key: UniqueKey()),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    PastLaunches(key: UniqueKey())
   ];
 
   void _onItemTapped(int index) {
@@ -75,8 +73,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Carte',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.history),
+            label: 'Historique',
           ),
         ],
         currentIndex: _selectedIndex,

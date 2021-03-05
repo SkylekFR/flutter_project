@@ -35,4 +35,24 @@ class LaunchManager {
     }
     return launches;
   }
+
+  Future<List<Launch>> loadPastLaunches() async {
+    List<Launch> launches = List();
+    // Calling API
+    try {
+      var response = await ApiManager().getPastLaunches();
+      if (response != null && response.data != null) {
+        // Mapping data
+        var data = response.data;
+        for(Map<String, dynamic> launch in data) {
+
+          launches.add(Launch.fromJson(launch));
+        }
+
+      }
+    } catch (e) {
+      print(e);
+    }
+    return launches;
+  }
 }

@@ -18,4 +18,7 @@ class ApiManager {
 
   Future<Response<List<dynamic>>> getAllLaunchpads() async =>
       await dio.get<List<dynamic>>("launchpads");
+
+  Future<Response<List<dynamic>>> getPastLaunches() async =>
+      await dio.get<List<dynamic>>("launches/past");
 }
