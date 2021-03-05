@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/ui/accueil.dart';
+import 'package:flutter_project/ui/carte.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,10 +45,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Accueil(key: UniqueKey()),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    Carte(key: UniqueKey()),
     Text(
       'Index 2: School',
       style: optionStyle,
