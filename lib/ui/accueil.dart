@@ -30,11 +30,10 @@ class _AccueilState extends State<Accueil> {
               if (snapshot.hasData) {
                 launchList.clear();
                 launchList.addAll(snapshot.data);
-                return Center(
-                  child: Column(
+                return Column(
                     children: [
-                      Text("${launchList[3].dateUnix}"),
-                      CountdownTimer(endTime: launchList[3].dateUnix * 1000),
+                      Text("Prochain décollage dans: "),
+                      CountdownTimer(endTime: launchList[0].dateUnix * 1000),
                       Text("Décollages suivants: "),
                       Expanded(
                         child: ListView.builder(
@@ -57,8 +56,8 @@ class _AccueilState extends State<Accueil> {
                             }),
                       )
                     ],
-                  ),
-                );
+                  );
+
               }
               else {
                 return Center(child: CircularProgressIndicator(),);
