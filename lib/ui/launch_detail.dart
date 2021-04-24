@@ -51,10 +51,12 @@ class _LaunchDetailState extends State<LaunchDetail> {
                 ),
               ),
             )),
-            Text(
+            Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, MediaQuery.of(context).padding.bottom.sign),
+              child: Text(
               "Lancement: ${DateFormat().format(DateTime.parse(launch.dateUtc))}",
               textScaleFactor: 1.25,
-            ),
+            ),)
+
           ],
         ),
       ),

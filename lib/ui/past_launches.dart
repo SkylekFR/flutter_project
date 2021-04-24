@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/manager/launch_manager.dart';
 import 'package:flutter_project/core/model/launch.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'launch_detail.dart';
 
@@ -16,7 +17,8 @@ class PastLaunches extends StatefulWidget {
 
 class _PastLaunchesState extends State<PastLaunches> {
   List<Launch> launchList = List();
-
+  List<String> favouriteLaunchIdList = List();
+  Icon icon = Icon(Icons.favorite_outline);
   void onListElementPressed(int index) {
     Navigator.push(
         context,
@@ -24,6 +26,15 @@ class _PastLaunchesState extends State<PastLaunches> {
             builder: (context) => LaunchDetail(
                   launch: launchList[index],
                 )));
+  }
+
+    bool isIdInFavouriteList(String id)  {
+    List<String> listFavourite = List();
+    SharedPreferences.getInstance().then((value) {
+      listFavourite =  value.getStringList("listFavouriteLaunch");
+    });
+    return listFavourite.contains(id);
+
   }
 
   @override
@@ -60,17 +71,24 @@ class _PastLaunchesState extends State<PastLaunches> {
                               }
                             },
                           ),
-                        );
-                      })
-                  ,)
+                          trailing: IconButton(
+                            icon: Icon(isIdInFavouriteList(launchList[index].id) ? Icons.favorite : Icons.favorite_outline),
+                            onPressed: ()  {
+                              setState(()
+                              {
+                                launchList[index].favouriteChecked = !launchList[index].favouriteChecked;
+                              });
 
+                            }
+                          ),
+                        );
+                      }),
+                )
               ],
             );
-          }
-          else {
+          } else {
             return Center(child: CircularProgressIndicator());
           }
-
         },
       ),
     );

@@ -45,7 +45,6 @@ class LaunchManager {
         // Mapping data
         var data = response.data;
         for(Map<String, dynamic> launch in data) {
-
           launches.add(Launch.fromJson(launch));
         }
 

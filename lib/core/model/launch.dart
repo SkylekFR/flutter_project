@@ -13,6 +13,8 @@ class Launch {
   int dateUnix;
   String name;
   Links links;
+  String id;
+  bool favouriteChecked = false;
 
   Launch();
 

@@ -19,6 +19,7 @@ Launch _$LaunchFromJson(Map<String, dynamic> json) {
         'links',
         (v) => val.links =
             v == null ? null : Links.fromJson(v as Map<String, dynamic>));
+    $checkedConvert(json, 'id', (v) => val.id = v as String);
     return val;
   }, fieldKeyMap: const {
     'dateUtc': 'date_utc',
@@ -34,4 +35,5 @@ Map<String, dynamic> _$LaunchToJson(Launch instance) => <String, dynamic>{
       'date_unix': instance.dateUnix,
       'name': instance.name,
       'links': instance.links?.toJson(),
+      'id': instance.id,
     };

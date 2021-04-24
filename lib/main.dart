@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/ui/accueil.dart';
+import 'package:flutter_project/ui/space_x_infos.dart';
 import 'package:flutter_project/ui/carte.dart';
 import 'package:flutter_project/ui/past_launches.dart';
+import 'package:flutter_project/ui/upcoming_launches.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,9 +44,10 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  TextStyle(fontSize: 22, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
-    Accueil(key: UniqueKey()),
+    UpcomingLaunches(key: UniqueKey()),
+    SpaceXInfos(key: UniqueKey()),
     Carte(key: UniqueKey()),
     PastLaunches(key: UniqueKey())
   ];
@@ -69,6 +71,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Accueil',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.info_outline),
+            label: 'SpaceX',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.map),
             label: 'Carte',
           ),
@@ -80,6 +86,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+        unselectedItemColor: Colors.black87,
+        type: BottomNavigationBarType.shifting,
       ),
     );
   }

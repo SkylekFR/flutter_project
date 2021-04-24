@@ -21,4 +21,7 @@ class ApiManager {
 
   Future<Response<List<dynamic>>> getPastLaunches() async =>
       await dio.get<List<dynamic>>("launches/past");
+
+  Future<Response<dynamic>> getCompanyInfo() async =>
+      await dio.get<dynamic>("company");
 }
